@@ -44,6 +44,9 @@ foreach($bestFriends as $friend) {
 // Map
 $customer = array('Name' => $userName, 'Street' => $streetName, 'City' => cityName);
 
+// Access associated array (i.e map)
+$customer['Name'];
+
 // Enhanced loop for map
 foreach($customer as $key => $value) {
     echo $key . ' : ' . $value;
