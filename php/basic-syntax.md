@@ -110,6 +110,10 @@ mysqli_close($connection);
 
 // Execute a Query
 $run_query = mysqli_query($connection, $query);
+$result = mysqli_fetch_assoc($run_query);
+
+// Count Number of Rows 
+$size = mysqli_num_rows($run_query);
 ```
 
 
@@ -122,6 +126,19 @@ $clean_email = filter_var($raw_email, FILTER_VALDATE_EMAIL);
 ```
 
 For more information, check [W3C](https://www.w3schools.com/php/php_ref_filter.asp). 
+
+
+
+## Double Quote vs Single Quote
+
+```php
+// String
+$s = "   dollars   ";
+echo 'This costs a lot of $s.'; // This costs a lot of $s.
+echo "This costs a lot of $s."; // This costs a lot of dollars.
+```
+
+
 
 #### reference
 
