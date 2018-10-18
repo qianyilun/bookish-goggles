@@ -34,7 +34,9 @@ $date = "2018/9/1";
 printf("Today is %s", $date);
 
 // Add Element to Array
-$bestFriends[4] = 'Steve';
+$bestFriends[unused_key_or_index] = 'Steve';
+// or
+$bestFriends[] = 'Steve';
 
 // Enhanced Loop of Array
 foreach($bestFriends as $friend) {
