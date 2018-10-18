@@ -38,6 +38,14 @@ $bestFriends[unused_key_or_index] = 'Steve';
 // or
 $bestFriends[] = 'Steve';
 
+// Remove one array element without auto reindexing
+$array = array(0 => "a", 1 => "b", 2 => "c");
+unset($array[1]); // output ([0] => a, [2] => c)
+
+// Remove one array element with auto reindexing
+$array = array(0 => "a", 1 => "b", 2 => "c");
+array_splice($array, 1, 1); // output ([0] => a, [1] => c)
+
 // Enhanced Loop of Array
 foreach($bestFriends as $friend) {
     echo $friend;
