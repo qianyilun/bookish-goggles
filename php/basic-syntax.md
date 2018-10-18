@@ -25,6 +25,8 @@ for ($index = 0; $index < 10; $index++) {
 
 // Array
 $bestFriends = array('Alex', 'Bob', 'Chair');
+// or
+$bestFriends = ['Alex', 'Bob', 'Chair'];
 
 // Print out, printf
 echo 'My first friend is ' . bestFriends[0];
