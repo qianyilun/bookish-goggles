@@ -23,7 +23,7 @@ for ($index = 0; $index < 10; $index++) {
 	echo $index;    
 }
 
-// Array
+// Array (associated array)
 $bestFriends = array('Alex', 'Bob', 'Chair');
 // or
 $bestFriends = ['Alex', 'Bob', 'Chair'];
@@ -51,7 +51,7 @@ foreach($bestFriends as $friend) {
     echo $friend;
 }
 
-// Map
+// Associated Array
 $customer = array('Name' => $userName, 'Street' => $streetName, 'City' => cityName);
 
 // Access Associated Array (i.e map)
