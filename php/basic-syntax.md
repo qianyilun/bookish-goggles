@@ -52,7 +52,7 @@ foreach($bestFriends as $friend) {
 }
 
 // Associated Array
-$customer = array('Name' => $userName, 'Street' => $streetName, 'City' => cityName);
+$customer = array('Name' => $userName, 'Street' => $streetName, 'City' => $cityName);
 
 // Access Associated Array (i.e map)
 $customer['Name'];
