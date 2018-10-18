@@ -75,6 +75,11 @@ function addNumbers($var1, $var2) {
     return $var1 + $var2;
 }
 
+// Function parameter with default value
+function addNumber($var=10){
+    return $var + 5;
+}
+
 // Invoke a Function
 echo '3 + 2 = ' . addNumbers(3, 2);
 
