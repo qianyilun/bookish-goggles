@@ -18,8 +18,6 @@ strtoupper($s);
 strtolower($s);
 ucfirst($s);
 
-// Reference
-
 // For loop
 for ($index = 0; $index < 10; $index++) {
 	echo $index;    
@@ -52,6 +50,10 @@ foreach($customer as $key => $value) {
     echo $key . ' : ' . $value;
 }
 
+// When to use assoicated array: from database
+$rows = mysqli_fetch_array($results);
+echo $rows['names']; // can alternative "select"
+
 // 2-D array
 $customers = array(array('Derek', '123 Main Street'),
                   array('Sally', '124 Main Street'),
@@ -78,6 +80,7 @@ function addNumbers($var1, $var2) {
 }
 
 echo '3 + 2 = ' . addNumbers(3, 2);
+
 
 ```
 
