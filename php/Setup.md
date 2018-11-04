@@ -8,10 +8,11 @@
     * Services -> MySQL
   * Back to General -> Go to Application
 * Initial one-time configuration
+  * Go to Dashboard (http://192.168.64.2/)
   * Go to **HOW-TO Guides**
   * Click **Enable Remote Access to phpMyAdmin**
   * Setup access rights
-  * Go to **phpMyAdmin** to see if it is valid
+  * Go to **phpMyAdmin**(http://192.168.64.2/phpmyadmin/) to see if it is valid
 
 
 
