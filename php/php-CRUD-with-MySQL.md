@@ -21,3 +21,11 @@ In this document, it will introduce how to use PHP to have CRUD (Create, Read, U
 13. Add hidden input field with the value of the record id to access it from POST
 14. If the **Update button** has been clicked, update the record with new `$name` and `$location` using the value from the hidden id input field. Set the value of `$id` to 0 outside the if statement.
 15. Set the `SESSION` message to updated, set the message type and redirect back to `index.php`
+
+
+
+### Reference
+
+
+
+[PHP CRUD Tutorial with MySQL & Bootstrap 4 (Create, Read, Update, Delete)](https://www.youtube.com/watch?v=3xRMUDC74Cw
