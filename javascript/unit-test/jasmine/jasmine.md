@@ -223,6 +223,24 @@ In this section, you will be ready to run Jasmine with TEW for unit tests. Also,
 
   * Basically, all bundled files will be imported from here. Jasmine will run test files from `bundle.js`, therefore, you need to "bundle" your test files manually before Jasmine runs.
 
+##Write Unit Test
+
+### Helper
+
+In TEW, there are 3 files under the `web/helper` folder: ModelHelper.js, EventHelper.js and UIHelper.js. It may have more files in the future.
+
+Let's take one example, `UIHelper.js`.  This file contains only 1 object called UIHelper. Therefore, we need to export it since we need to `require` the file and get the returned value when we are writing its test cases.
+
+```:bug:
+var UIHelper = {
+	// ...
+};
+
+module.exports = UIHelper; // need to return values from this line
+```
+
+
+
 ## Reference
 
 * [Jasmine doc](https://jasmine.github.io/2.0/introduction.html)
