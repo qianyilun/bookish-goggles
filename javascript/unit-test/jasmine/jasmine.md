@@ -159,13 +159,29 @@ In this section, you will be ready to run Jasmine with TEW for unit tests. Also,
 ###Dependency and Plugins
 
 * Install dependencies and `browserify` 
+
   * Dependency
+
     * openui5/sap.ui.core: `npm install @openui5/sap.ui.core`
   * [Browserify](http://browserify.org/)
+
     * `npm install -g browserify`
+
     * Why we need to use `browserify`
       * `require` is the technology in server-side (i.e. Node.js)
-      * browser does not support `require`, therefore we need `browserify` to auto bundle necessary files
+      * Browser does not support `require`, therefore we need `browserify` to auto bundle necessary files
+
+    * What the "bundle" means
+
+      * Browserify will import the files that test file `require()` then concatenate them to the same file
+
+    * How to "bundle"
+
+      * Run cmd under `tew/StewWeb/src/test/webapp ` folder
+
+        `browserify spec/tew.spec.js -o bundle.js` 
+
+        Means bundle `spec/tew.spec.js` into `bundle.js`. Apparently, you can customize the `bundle.js` to any names. But you need to **update** the name in the `SpecRunner.html` as well. Otherwise, it will not be found. (Shell script can help shortly.) 
 
 ###Jasmine Components
 
@@ -209,10 +225,10 @@ In this section, you will be ready to run Jasmine with TEW for unit tests. Also,
 
 ## Reference
 
-* Jasmine doc
+* [Jasmine doc](https://jasmine.github.io/2.0/introduction.html)
 * [Browserify doc](http://browserify.org/)
 * Dependency: [sap.ui.core](https://www.npmjs.com/package/@openui5/sap.ui.core)
 * How to setup and bundle files by `browserify`
   * [Getting Started with Browserify](https://www.youtube.com/watch?v=CTAa8IcQh1U)
 * [Jasmine SpecRunner.html introduction](https://github.com/jasmine/jasmine/wiki/A-simple-project)
-* 
+* [Unit Testing in JavaScript via Jasmine](https://www.youtube.com/watch?v=eVpXkyN0zOE)
