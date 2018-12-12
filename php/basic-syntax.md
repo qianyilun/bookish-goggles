@@ -23,8 +23,10 @@ for ($index = 0; $index < 10; $index++) {
 	echo $index;    
 }
 
-// Array
+// Array (associated array)
 $bestFriends = array('Alex', 'Bob', 'Chair');
+// or
+$bestFriends = ['Alex', 'Bob', 'Chair'];
 
 // Print out, printf
 echo 'My first friend is ' . bestFriends[0];
@@ -32,15 +34,25 @@ $date = "2018/9/1";
 printf("Today is %s", $date);
 
 // Add Element to Array
-$bestFriends[4] = 'Steve';
+$bestFriends[unused_key_or_index] = 'Steve';
+// or
+$bestFriends[] = 'Steve';
+
+// Remove one array element without auto reindexing
+$array = array(0 => "a", 1 => "b", 2 => "c");
+unset($array[1]); // output ([0] => a, [2] => c)
+
+// Remove one array element with auto reindexing
+$array = array(0 => "a", 1 => "b", 2 => "c");
+array_splice($array, 1, 1); // output ([0] => a, [1] => c)
 
 // Enhanced Loop of Array
 foreach($bestFriends as $friend) {
     echo $friend;
 }
 
-// Map
-$customer = array('Name' => $userName, 'Street' => $streetName, 'City' => cityName);
+// Associated Array
+$customer = array('Name' => $userName, 'Street' => $streetName, 'City' => $cityName);
 
 // Access Associated Array (i.e map)
 $customer['Name'];
@@ -50,7 +62,11 @@ foreach($customer as $key => $value) {
     echo $key . ' : ' . $value; // . means attaching
 }
 
-// 2-D Array
+// When to use assoicated array: from database
+$rows = mysqli_fetch_array($results);
+echo $rows['names']; // can alternative "select"
+
+// 2-D array
 $customers = array(array('Derek', '123 Main Street'),
                   array('Sally', '124 Main Street'),
                   array('Bob', '125 Main Street'));
@@ -73,6 +89,11 @@ ksort(yourArray); // sort array	by the key
 // Function
 function addNumbers($var1, $var2) {
     return $var1 + $var2;
+}
+
+// Function parameter with default value
+function addNumber($var=10){
+    return $var + 5;
 }
 
 // Invoke a Function
