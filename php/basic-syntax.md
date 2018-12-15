@@ -9,6 +9,9 @@ $s = "   dollars   ";
 echo 'This costs a lot of $s.'; // This costs a lot of $s.
 echo "This costs a lot of $s."; // This costs a lot of dollars.
 
+// strcmp, string compare
+strcmp('a', 'a'); // will return 0 if equals
+
 // strlen, trim
 strlen($s);
 strlen(trim($s));
