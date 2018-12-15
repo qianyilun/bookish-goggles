@@ -156,7 +156,7 @@ describe('calculate addition', function(){
 
 In this section, you will be ready to run Jasmine with TEW for unit tests. Also, you will get to know detailed configuration in case you would like to edit.
 
-###Dependency and Plugins
+### Dependency and Plugins
 
 * Install dependencies and `browserify` 
 
@@ -183,7 +183,7 @@ In this section, you will be ready to run Jasmine with TEW for unit tests. Also,
 
         Means bundle `spec/tew.spec.js` into `bundle.js`. Apparently, you can customize the `bundle.js` to any names. But you need to **update** the name in the `SpecRunner.html` as well. Otherwise, it will not be found. (Shell script can help shortly.) 
 
-###Jasmine Components
+### Jasmine Components
 
 * `SpecRunner.html` 
 
