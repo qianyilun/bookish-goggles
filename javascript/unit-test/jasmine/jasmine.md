@@ -46,7 +46,6 @@
   Randomized with seed 55149 (jasmine --random=true --seed=55149)
   ```
 
-* 
 
 ## Keyword Explanation
 
@@ -179,15 +178,15 @@ In this section, you will be ready to run Jasmine with TEW for unit tests. Also,
 
       * Run cmd under `tew/StewWeb/src/test/webapp ` folder
 
-        `browserify spec/tew.spec.js -o bundle.js` 
+        `browserify <path>/<filename>.spec.js -o bundle.js` 
 
-        Means bundle `spec/tew.spec.js` into `bundle.js`. Apparently, you can customize the `bundle.js` to any names. But you need to **update** the name in the `SpecRunner.html` as well. Otherwise, it will not be found. (Shell script can help shortly.) 
+        Means bundle `<path>/<filename>.spec.js` into `bundle.js`. Apparently, you can customize the `bundle.js` to any names. But you need to **update** the name in the `SpecRunner.html` as well. Otherwise, it will not be found. (Shell script can help shortly.) 
 
 ### Jasmine Components
 
 * `SpecRunner.html` 
 
-  ```javascript
+  ```html
   <!-- This is Jasmine Components to run tests via browswer -->
   <link rel="shortcut icon" type="image/png" href="../../../node_modules/jasmine-core/images/jasmine_favicon.png">
   <link rel="stylesheet" href="../../../node_modules/jasmine-core/lib/jasmine-core/jasmine.css">
@@ -201,7 +200,7 @@ In this section, you will be ready to run Jasmine with TEW for unit tests. Also,
 
     ------------------------------------------------------------------------------------------------------------------------------------------------
 
-  ```javascript
+  ```html
   <!-- TEW requires sapui5 components -->
   <script 
       src="https://sapui5.hana.ondemand.com/1.44.11/resources/sap-ui-core.js"
@@ -216,7 +215,7 @@ In this section, you will be ready to run Jasmine with TEW for unit tests. Also,
 
     ------------------------------------------------------------------------------------------------------------------------------------------------
 
-  ```javascript
+  ```html
   <!-- include spec files here... -->
   <script src="bundle.js"></script>
   ```
@@ -229,17 +228,108 @@ In this section, you will be ready to run Jasmine with TEW for unit tests. Also,
 
 In TEW, there are 3 files under the `web/helper` folder: ModelHelper.js, EventHelper.js and UIHelper.js. It may have more files in the future.
 
-Let's take one example, `UIHelper.js`.  This file contains only 1 object called UIHelper. Therefore, we need to export it since we need to `require` the file and get the returned value when we are writing its test cases.
+Let's take one example, `ModelHelper.js`.  This file contains only 1 object called ModelHelper and it includes all the functions. Therefore, we need to export it since we need to `require` the file and get the returned value when we are writing its test cases.
 
-```:bug:
-var UIHelper = {
-	// ...
+For demo purpose, I faked 3 classic functions 
+
+* Without parameters
+* With parameters
+  * Parameter as primitive type 
+  * Parameter as an object
+
+```javascript
+var ModelHelper = {
+    // methods go here
+    testResult: function() {
+        return 1;
+    },
+
+    testResultWithParam: function(num) {
+        return 1 + num;
+    },
+
+    testResultWithJson: function(object) {
+        return object.num;
+    }
 };
 
-module.exports = UIHelper; // need to return values from this line
+module.exports = ModelHelper;
 ```
 
+In the test code...
 
+```javascript
+var modelHelper = require('../../../main/webapp/helper/ModelHelper.js');
+
+describe('modelHelper test', function(){
+    it('sample', function() {
+        let spec = modelHelper.testResult();
+        expect(spec).toBe(1);
+    });
+
+    it('sampleWithParam', function() {
+        let spec = modelHelper.testResultWithParam(2);
+        expect(spec).toBe(3);
+    });
+
+    it('sampleWithObject', function() {
+        let object = {num: "3"};
+        let spec = modelHelper.testResultWithJson(object);
+        expect(spec).toBe("3");
+    });	
+});
+```
+
+## Mock in Jasmine
+
+Similar as Mockito, we also need the support of mocking and stubbing methods in JavaScript. Jasmine is able to do this by using `spyon()` and `callFake()`.
+
+### Spies
+
+A spy can stub any function and tracks calls to it and all arguments. A spy only exists in the `describe` or `it` block in which it is defined, and will be removed after each calls. You will define what the spy will do when invoked with `and` (details later).
+
+Suppose the source code will invoke another function inside one function. I will fake methods as well.
+
+```javascript
+var ModelHelper = {
+    testResult: function() {
+        return 1;
+    },
+    testResultWithSpy: function() {
+        let result = this.testResult();
+        return result;
+    }
+};
+
+module.exports = ModelHelper;
+```
+
+In the test code, I mocked the result of method `testResult()` to a specific value `3`.
+
+```javascript
+var modelHelper = require('../../../main/webapp/helper/ModelHelper.js');
+
+describe('modelHelper test', function(){
+    it('sampleWithSpy', function() {
+        spyOn(modelHelper, "testResult").and.callFake(() => {
+            // you can do whatever you want here
+            return 3;
+        });
+        let spec = modelHelper.testResultWithSpy();
+
+        expect(modelHelper.testResult).toHaveBeenCalled();
+        expect(spec).toBe(3);
+    });	
+});
+```
+
+**SpyOn()**
+
+* `SpyOn()` takes two parameters. The first one is object name. The second one is the function name inside the object name
+* When Jasmine hits the line of `testResult()` on source code, it will pause
+  * If **no** any stubbing method following (i.e. `spyOn(modelHelper), "testResult");`), Jasmine will skip this method, which means this method will **not** be invoked
+  * If it stubs `and.callFake(<callback function inside>);`, then Jasmine will turns to execute the `<callback function inside>>` and the value will be calculated from `<callback function>` instead. 
+    * In the example above, `testResult()` will return value as `3` instead of `1`;
 
 ## Reference
 
