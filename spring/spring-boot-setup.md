@@ -1,10 +1,11 @@
-##Setup 
+## Environment
+* Java 8
+* Eclipse for Java EE
 
-* Download Java 8
-* Download Eclipse for Java EE
+## Setup 
+
 * Open Eclipse
   * Help -> install new software -> search "Spring Tool Suite" -> install 
-
 
 
 ## Configure pom.xml
@@ -52,7 +53,7 @@
 * Eclipse: right click the project --> Maven --> Update project
   * IntelliJ, no need to update (but ensure open auto-import)
 
-####reference
+#### reference
 
 * [Spring Boot Quick Start 8 - Creating a Spring Boot project](https://youtu.be/bDtZvYAT5Sc) 
 
