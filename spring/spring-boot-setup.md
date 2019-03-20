@@ -1,10 +1,11 @@
+## Environment
+* Java 8
+* Eclipse for Java EE
+
 ## Setup 
 
-* Download Java 8
-* Download Eclipse for Java EE
 * Open Eclipse
   * Help -> install new software -> search "Spring Tool Suite" -> install 
-
 
 
 ## Configure pom.xml
