@@ -76,5 +76,3 @@ This is a practice project for self-learning from [Udemy](https://www.udemy.com/
 
     `.../posts/1 ` or `.../posts/create`
 
-### Laravel Fundamentals - Views
-
