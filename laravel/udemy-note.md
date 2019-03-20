@@ -1,7 +1,7 @@
 ## Introduction
 This is a practice project for self-learning from [Udemy](https://www.udemy.com/php-with-laravel-for-beginners-become-a-master-in-laravel).
 
-###Laravel Fundamentals - Routes
+### Laravel Fundamentals - Routes
 * Naming Routes (26)
     * Sometimes, the url might be super long. For a better experience, we can rename it as by using array.
       Please refer it to `routes/web.php` line 22.
@@ -13,7 +13,7 @@ This is a practice project for self-learning from [Udemy](https://www.udemy.com/
       }));
     ```
 
-###Laravel Fundamentals - Controller
+### Laravel Fundamentals - Controller
 * Create Controller (28)
 
     ```$ php artisan make:controller --resource PostsController```
@@ -75,6 +75,4 @@ This is a practice project for self-learning from [Udemy](https://www.udemy.com/
   * What URL to access the method?
 
     `.../posts/1 ` or `.../posts/create`
-
-###Laravel Fundamentals - Views
 
