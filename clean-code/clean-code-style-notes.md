@@ -278,3 +278,28 @@
 		- Second one is better，因为第一个里面是两个 `getter` 来拿到两个 `variable`: `fuelTankCapacityInGallons` and `gallonsOfGasoline`.  It exposed definition of these two variables. Compared to the `getPercentFuelRemaining()`, user has no idea 谁除以谁, it saves variables from exposing. 
 	> We do not want to expose the details of our data.
 	> Serious thought needs to be put into the best way to represent the data that an object contains. The worst option is to blithely add getters and setters 
+
+- Date/Object Anti-Symmetry
+  - OO code vs. procedural code
+  - 面向对象较难的事，对于过程式代码却较容易，反之亦然
+  - We need to consider when should use OOD code, when should use procedural code
+- The Law of Demeter
+  - > 模块不应了解它所操作对象的内部情形
+  - Train Wrecks 
+    - 个人理解为类似于 链式 的表达式
+    - 第二种方式更好
+    - 思考
+      - 在我平时写代码的时候，可能会用到 function progarmming 的 chain，这个和此问题是不一样的，不要混淆
+      - 尽量不要用这种 accessor 的 chain
+	``` java
+	final String outputDir = ctxt.getOptions().getScratchDir().getAbsolutePath();
+
+	// vs.
+	final String outputDir = ctxt.options.scratchDir.absolutePath
+	```
+  - Hybrids
+    - Do not create a class with half object and half data structure
+  - Hidden Structure
+    - 没看懂
+- Data Transfer Objects (DTO)
+  - 
